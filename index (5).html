@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yatri Pipariya | Blog</title>
+  <meta name="description" content="Personal blog of Yatri Pipariya from Surat, Gujarat.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="#home" class="brand">Yatri Pipariya</a>
+    <nav>
+      <button class="nav-btn active" data-page="home">Blogs</button>
+      <button class="nav-btn" data-page="write">Write a blog</button>
+      <button class="nav-btn" data-page="about">About me</button>
+      <button class="nav-btn" data-page="contact">Contact</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home" class="page active">
+      <div class="hero">
+        <h1>Notes from Surat,<br>roots in Bhavnagar.</h1>
+        <p>A blog by Yatri Pipariya about learning web development, city life and home.</p>
+      </div>
+
+      <div class="toolbar">
+        <input type="search" id="search" placeholder="Search blogs by title or text" aria-label="Search blogs">
+        <select id="filter" aria-label="Filter by category">
+          <option value="All">All categories</option>
+          <option>Technology</option>
+          <option>Travel</option>
+          <option>Food</option>
+          <option>Life</option>
+        </select>
+      </div>
+
+      <p id="count" class="count"></p>
+      <div id="posts" class="posts"></div>
+    </section>
+
+    <!-- WRITE -->
+    <section id="write" class="page">
+      <h2>Write a new blog</h2>
+      <form id="blogForm" novalidate>
+        <label for="title">Title</label>
+        <input type="text" id="title" maxlength="80" placeholder="Give your blog a title">
+        <small class="error" id="titleErr"></small>
+
+        <label for="author">Your name</label>
+        <input type="text" id="author" maxlength="40" placeholder="e.g. Yatri Pipariya">
+        <small class="error" id="authorErr"></small>
+
+        <label for="category">Category</label>
+        <select id="category">
+          <option>Technology</option>
+          <option>Travel</option>
+          <option>Food</option>
+          <option>Life</option>
+        </select>
+
+        <label for="content">Blog text</label>
+        <textarea id="content" rows="9" placeholder="Write your blog here (at least 30 characters)"></textarea>
+        <div class="row"><small class="error" id="contentErr"></small><small id="charCount">0 characters</small></div>
+
+        <label for="image">Cover image (optional)</label>
+        <input type="file" id="image" accept="image/*">
+        <small class="error" id="imageErr"></small>
+        <img id="preview" alt="Image preview" hidden>
+
+        <div class="actions">
+          <button type="submit" class="primary">Publish blog</button>
+          <button type="reset" class="ghost" id="resetBtn">Clear form</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="page">
+      <h2>About me</h2>
+      <div class="about">
+        <div class="avatar" aria-hidden="true">YP</div>
+        <div>
+          <p>Hi, I'm <strong>Yatri Pipariya</strong>. That's Y-A-T-R-I, and the surname is P-I-P-A-R-I-Y-A.</p>
+          <p>I live in <strong>Surat</strong>, Gujarat, the city of diamonds and textiles on the banks of the Tapi river. My family originally belongs to <strong>Bhavnagar</strong>, a coastal city on the Gulf of Khambhat that is known for Takhteshwar Temple, Nilambag Palace and the famous gathiya.</p>
+          <p>I'm a student learning web application development. This blog is my final project, built with plain HTML, CSS and JavaScript, with no frameworks and no backend. Blogs you publish here are saved in your own browser using <code>localStorage</code>.</p>
+          <ul class="facts">
+            <li><span>Name</span> Yatri Pipariya</li>
+            <li><span>Lives in</span> Surat, Gujarat</li>
+            <li><span>Hometown</span> Bhavnagar, Gujarat</li>
+            <li><span>Learning</span> HTML, CSS, JavaScript</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="page">
+      <h2>Contact</h2>
+      <form id="contactForm" novalidate>
+        <label for="cname">Name</label>
+        <input type="text" id="cname">
+        <label for="cemail">Email</label>
+        <input type="email" id="cemail">
+        <label for="cmsg">Message</label>
+        <textarea id="cmsg" rows="5"></textarea>
+        <small class="error" id="contactErr"></small>
+        <div class="actions"><button type="submit" class="primary">Send message</button></div>
+        <p id="contactOk" class="success" hidden>Thanks! Your message was recorded.</p>
+      </form>
+    </section>
+  </main>
+
+  <!-- Blog reader dialog -->
+  <dialog id="reader">
+    <button class="close" id="closeReader" aria-label="Close">&times;</button>
+    <article id="readerBody"></article>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <footer>&copy; <span id="year"></span> Yatri Pipariya &middot; Surat, Gujarat</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
